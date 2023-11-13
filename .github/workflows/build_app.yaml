@@ -2,7 +2,7 @@ name: Playstore deployment
 on:
   push:
     branches:
-      - hf-change-workflow
+      - master
 jobs:
   #CI
   build_android:
@@ -36,4 +36,4 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: release-appbundle
-          path: build/app/outputs/bundle/release/app-release.apk
+          path: build/app/outputs/flutter-apk/app-release.apk
