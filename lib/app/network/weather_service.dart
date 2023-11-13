@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:dvt_weather_app/app/model/forecast_data.dart';
 import 'package:dvt_weather_app/app/model/weather_data.dart';
+// ignore: unused_import
 import 'package:dvt_weather_app/app/network/loggng_interceptor.dart';
 import 'package:dvt_weather_app/app/utils/configs.dart';
 import 'package:flutter/material.dart';

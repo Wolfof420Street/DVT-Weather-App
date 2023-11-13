@@ -2,7 +2,7 @@ name: Playstore deployment
 on:
   push:
     branches:
-      - master
+      - hf-change-workflow
 jobs:
   #CI
   build_android:
@@ -21,11 +21,16 @@ jobs:
           flutter-version: 3.13.9
       - name: Install Flutter dependencies
         run: flutter pub get
+        
+      - name: Create Configs File
+        run: |
+          echo "const String apiKey = '${{ secrets.API_KEY }}';" > lib/utils/configs.dart
+
       - name : Run tests
         run: flutter test --coverage
-      - run: flutter build appbundle --no-tree-shake-icons
+      - run: flutter build apk --no-tree-shake-icons
       - name: Upload artifact to Github
         uses: actions/upload-artifact@v1
         with:
           name: release-appbundle
-          path: build/app/outputs/bundle/release/app-release.aab
+          path: build/app/outputs/bundle/release/app-release.apk
